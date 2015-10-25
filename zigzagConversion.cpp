@@ -18,7 +18,15 @@
  *
  **********************************************************************/
 
+/* find the pattern:
+ * 0           6           12          18
+ *   1       5   7       11  13      17  19
+ *     2   4       8   10      14  16      20
+ *       3           9           15
+ */
+
 class Solution {
+
 
 public:
 
@@ -27,19 +35,13 @@ public:
 	}
 	
 	// 16ms solution:
-	// find the pattern ¡ý
-	// 0           6           12          18
-	//   1       5   7       11  13      17  19
-	//     2   4       8   10      14  16      20
-	//       3           9           15
 	string solution2(string s, int numRows) {		
 		if (s.size() <= numRows || numRows <= 1) return s;
 		string z;
 		int size = s.size(), len = numRows * 2 - 2;
-
 		// first row
-		for (int i = 0; i<size; i += len)  z += s[i];
-		
+		for (int i = 0; i<size; i += len)
+			z += s[i];
 		// others
 		for (int row = 1; row<numRows - 1; row++) {
 			int i = row, j = len - i;
@@ -49,9 +51,9 @@ public:
 			}
 			if (i<size) z += s[i];
 		}
-		
 		// last row
-		for (int i = numRows - 1; i<size; i += len)  z += s[i];
+		for (int i = numRows - 1; i<size; i += len)
+			z += s[i];
 		return z;
 	}
 
