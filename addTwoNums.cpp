@@ -27,7 +27,7 @@ public:
 		// solution1(l1, l2);
 		solution2(l1, l2);
 	}
-
+	
 	// instead of using if statement inside while loop, using multiple while statements.
 	// optimized runtime 44ms -> 36ms.
 	// not sure if this is a proper way.
