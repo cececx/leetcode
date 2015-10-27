@@ -19,14 +19,14 @@ class Solution {
 public:
 	// use string.find_first_not_of(char), runtime 12ms->8ms
 	// put all the if conditions behind a while statement, runtime 12ms->8ms
-    int myAtoi(string str) {
-        long num = 0;
-        bool neg = false;
-        int i = str.find_first_not_of(' ');
-        if(str[i] == '+' || str[i] == '-')
-            neg = str[i++] == '-';
-        while(str[i]>='0' && str[i]<='9' && num <= INT_MAX )
-            num = num*10 + str[i++] - '0';
-        return num > INT_MAX ? (neg ? INT_MIN : INT_MAX) : (neg ? -num : num);
-    }
+	int myAtoi(string str) {
+		long num = 0;
+		bool neg = false;
+		int i = str.find_first_not_of(' ');
+		if(str[i] == '+' || str[i] == '-')
+			neg = str[i++] == '-';
+		while(str[i]>='0' && str[i]<='9' && num <= INT_MAX )
+			num = num*10 + str[i++] - '0';
+		return num > INT_MAX ? (neg ? INT_MIN : INT_MAX) : (neg ? -num : num);
+	}
 };
