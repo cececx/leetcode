@@ -36,16 +36,16 @@ public:
 		int begin(0), len(1);
 		for (int i = 0; i < s.size();) {
 			if (s.size() - i <= len / 2) break;
-			int left = i, right = i;
-			while (right < s.size()-1 && s[right+1] == s[right]) ++right;	// Skip duplicate characters -> for even substring
-			i = right + 1;
-			while (right<s.size()-1 && left>0 && s[right+1] == s[left-1]) {	// Expand
-				++right; 
-				--left; 
+			int l = i, r = i;
+			while (r < s.size()-1 && s[r+1] == s[r]) ++r;		// Skip duplicate char (even substring)
+			i = r + 1;
+			while (r<s.size()-1 && l>0 && s[r+1] == s[l-1]) {	// Expand
+				++r; 
+				--l; 
 			}
-			int newLen = right-left+1;  // pre-store (right-left+1)
-			if (len < newLen) { 		// >> runtime: 8ms->4ms  【贱人就是矫情(..•˘_˘•..)
-				begin = left; 
+			int newLen = r-l+1;		// pre-store (r-l+1)
+			if (len < newLen) {		// >> runtime: 8ms->4ms  【贱人就是矫情(..•˘_˘•..)
+				begin = l; 
 				len = newLen;
 			}
 		}
