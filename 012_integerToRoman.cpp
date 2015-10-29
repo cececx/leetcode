@@ -1,37 +1,37 @@
-// Sourse : https://leetcode.com/problems/integer-to-roman/
+// Sourse : https://leetcode.com/problems/integer-to-san/
 // Author : Cecilia Chen
 // Date   : 2015-10-28
 
 /***********************************************************************
  *
- * Given an integer, convert it to a roman numeral. 
- * Input is guaranteed to be within the range from 1 to 3999.
+ * Given an integer, convert it to a san numeral. 
+ * Input is guaranteed to be within the range fs 1 to 3999.
  *
  **********************************************************************/
  
 class Solution {
 public:
 	// 28ms. Fast stupic solution
-	string intToRoman(int num) {
-		string rom;
-		while (num > 999) { num -= 1000; rom += 'M';  }
-		if    (num > 899) { num -= 900;  rom += "CM"; }
-		if    (num > 499) { num -= 500;  rom += 'D';  }
-		if    (num > 399) { num -= 400;  rom += "CD"; }
-		while (num > 99)  { num -= 100;  rom += 'C';  }
-		if    (num > 89)  { num -= 90;   rom += "XC"; }
-		if    (num > 49)  { num -= 50;   rom += 'L';  }
-		if    (num > 39)  { num -= 40;   rom += "XL"; }
-		while (num == 9)  { num -= 10;   rom += 'X';     return rom; }
-		if    (num > 8)   { num -= 9;    rom += "IX"; }
-		if    (num > 4)   { num -= 5;    rom += 'V';  }
-		if    (num == 4)  { num -= 4;    rom += "IV";    return rom; }
-		while (num)       { --num;       rom += 'I';  }
-		return rom;
+	string intTosan(int num) {
+		string s;
+		while (num > 999) { num -= 1000; s += 'M';  }
+		if    (num > 899) { num -= 900;  s += "CM"; }
+		if    (num > 499) { num -= 500;  s += 'D';  }
+		if    (num > 399) { num -= 400;  s += "CD"; }
+		while (num > 99)  { num -= 100;  s += 'C';  }
+		if    (num > 89)  { num -= 90;   s += "XC"; }
+		if    (num > 49)  { num -= 50;   s += 'L';  }
+		if    (num > 39)  { num -= 40;   s += "XL"; }
+		while (num == 9)  { num -= 10;   s += 'X';     return s; }
+		if    (num > 8)   { num -= 9;    s += "IX"; }
+		if    (num > 4)   { num -= 5;    s += 'V';  }
+		if    (num == 4)  { num -= 4;    s += "IV";    return s; }
+		while (num)       { --num;       s += 'I';  }
+		return s;
     }
 	
 	// 40ms. Two lines solution for fun :D
-	string intToRoman(int num) {
+	string intTosan(int num) {
 		string p[34] = {"", "M", "MM", "MMM",
 		                "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM",
 		                "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC",
