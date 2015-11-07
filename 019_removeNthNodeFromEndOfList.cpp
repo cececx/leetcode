@@ -26,9 +26,8 @@
  
 class Solution {
 public:
-
     // One pass 4ms O(n)
-
+	
     ListNode* removeNthFromEnd(ListNode* head, int n) {
         ListNode * f = head, * r = head;
         for(int i=0; i<n+1; i++) {
