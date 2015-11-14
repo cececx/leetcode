@@ -23,15 +23,28 @@
 */
 class Solution {
 public:
+	#define SOLUTION_1
+	
+	#ifdef SOLUTION_1
+	
+	// 44ms concise solution
 	ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-		// solution1(l1, l2);
-		solution2(l1, l2);
+		ListNode head(0), *p = &head;
+		int extra = 0;
+		while (l1 || l2 || extra) {
+			if (l1) extra += l1->val, l1 = l1->next;
+			if (l2) extra += l2->val, l2 = l2->next;
+			p->next = new ListNode(extra % 10);
+			extra /= 10;
+			p = p->next;
+		}
+		return head.next;
 	}
 	
-	// instead of using if statement inside while loop, using multiple while statements.
-	// optimized runtime 44ms -> 36ms.
-	// not sure if this is a proper way.
-	ListNode* solution2(ListNode* l1, ListNode* l2) {
+	#else
+	
+	// 36ms using multiple while statements instead of using if statement inside while loop, 
+	ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
 		ListNode head(0), *p = &head;
 		int extra = 0;
 		while (l1 && l2) {
@@ -53,17 +66,6 @@ public:
 		return head.next;
 	}
 
-	// 44ms concise solution
-	ListNode* solution1(ListNode* l1, ListNode* l2) {
-		ListNode head(0), *p = &head;
-		int extra = 0;
-		while (l1 || l2 || extra) {
-			if (l1) extra += l1->val, l1 = l1->next;
-			if (l2) extra += l2->val, l2 = l2->next;
-			p->next = new ListNode(extra % 10);
-			extra /= 10;
-			p = p->next;
-		}
-		return head.next;
-	}
+	#endif
+	
 };
