@@ -1,6 +1,5 @@
-// Sourse : https://leetcode.com/problems/longest-common-prefix/
-// Author : Cecilia Chen
-// Date   : 2015-10-28
+// Source : https://leetcode.com/problems/longest-common-prefix/
+// Difficulty: Easy
 
 /***********************************************************************
  *
@@ -8,19 +7,22 @@
  *
  **********************************************************************/
  
+// m = length of one string
+// k = #strings
+ 
+ 
+
+// Time O(mk), Space O(1)
 class Solution {
 public:
-	// 4ms	 
-	string longestCommonPrefix(vector<string>& strs) {
-		if(strs.empty()) return "";
-		for(int idx = 0; idx < strs[0].size(); idx++){
-			for(int i = 1; i < strs.size(); i++){
-				if(idx >= strs[i].size() || strs[i][idx] != strs[0][idx])
-					return strs[0].substr(0, idx);
-			}
-		}
+	string longestCommonPrefix(vector<string>& s) {
+	    if (strs.empty()) return ""; // empty input
+	    
+		for (int j = 0; j < s[0].size(); j++)   // each char in 1st line
+			for (int i = 1; i < s.size(); i++)  // other lines
+				if(j >= s[i].size() || s[i][j] != s[0][j]) // index reached the end / char is diff from str[0]
+					return s[0].substr(0, j);
+
 		return strs[0];
 	}
 };
-
-// O(mn)? 这么任性我也是醉舞九天wwww

@@ -1,6 +1,4 @@
-// Sourse : https://leetcode.com/problems/majority-element/
-// Author : Cecilia Chen
-
+// Source : https://leetcode.com/problems/majority-element/
 // Difficulty : Easy
 
 /***********************************************************************
@@ -8,39 +6,32 @@
  * Given a positive integer, return its corresponding column title as appear in an Excel sheet.
  *
  **********************************************************************/
- 
+
+// Time O(n), Space O(n) 
 class Solution {
 public:
-    // #define hashmap
-    #ifdef hashmap
-
-    // 48ms, hash map
     int majorityElement(vector<int>& nums) {
         unordered_map<int, int> map;
         int size = nums.size();
         for(int i=0; i<size; ++i) {
-            if (map.find(nums[i])==map.end())
-                map[nums[i]] = 0;
             ++ map[nums[i]];
             if (map[nums[i]] > size/2 ) return nums[i];
         }
     }
+}
 	
-    #else
-		
-	// 12ms
+// Time O(n), Space O(1)
+class Solution {
+public:
 	int majorityElement(vector<int>& nums) {
-        int major=nums[0], count = 1;
-        for(int i=1; i<nums.size();i++){
-            if(count == 0){
+        int res = nums[0], count = 1;
+        for(int n : nums){
+            if(!count){
                 count++;
-                major=nums[i];
+                res = n;
             }
-            else if(major==nums[i]) count++;
-            else count--;
+            else res == n ? ++count : --count;
         }
-        return major;
+        return res;
     }
-	
-    #endif
 };

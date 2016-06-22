@@ -1,6 +1,5 @@
-// Sourse : https://leetcode.com/problems/reverse-integer/
-// Author : Cecilia Chen
-// Date   : 2015-10-24
+// Source : https://leetcode.com/problems/reverse-integer/
+// Difficulty: Easy
 
 /***********************************************************************
  *
@@ -20,7 +19,7 @@ public:
 			y = 10 * y + x % 10;
 			x /= 10;
 		}
-		// and it lived happy ever after
+		// and it lived happily ever after
 		return (y < INT_MIN || y > INT_MAX) ? 0 : y;
 	}
 };

@@ -1,6 +1,4 @@
-// Sourse : https://leetcode.com/problems/delete-node-in-a-linked-list/
-// Author : Cecilia Chen
-
+// Source : https://leetcode.com/problems/delete-node-in-a-linked-list/
 // Difficulty : Easy
 
 /***********************************************************************
@@ -20,10 +18,11 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+ 
+
 class Solution {
 public:
     void deleteNode(ListNode* node) {
-        node->val = node->next->val;
-        node->next = node->next->next;
+        *node = *node->next;
     }
 };

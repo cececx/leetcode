@@ -1,6 +1,5 @@
-// Sourse : https://leetcode.com/problems/reverse-linked-list/
-// Author : Cecilia Chen
-// Date   : 2015-11-12
+// Source : https://leetcode.com/problems/reverse-linked-list/
+// Difficulty: Easy
 
 /***********************************************************************
  *
@@ -17,27 +16,25 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+
  
-class Solution {
-public:
-    
-    ListNode* reverseIterative(ListNode* head) {
-        ListNode* dummy = new ListNode(0);
-        while(head) {
-            ListNode* next = head->next;
-            head->next = dummy->next;
-            dummy->next = head;
-            head = next;
-        }
-        return dummy->next;
-    }
-    
-    
-    ListNode* reverseRecursive(ListNode* head) {
-        if(!head || !head->next) return head;
-        ListNode* cur = reverseRecursive(head->next);
-        head->next->next = head;
-        head->next = NULL;
-        return cur;
-    }
-};
+// Iterative
+ListNode* reverse(ListNode* head) {
+    ListNode last = NULL;
+    while (head) {
+        ListNode* next = head->next;
+        head->next = last;
+        last = head;
+        head = next;
+     }
+    return last;
+}
+
+// Recursive
+ListNode* reverse(ListNode* head) {
+    if (!head || !head->next) return head;
+    ListNode* cur = reverseRecursive(head->next);
+    head->next->next = head;
+    head->next = NULL;
+    return cur;
+}
