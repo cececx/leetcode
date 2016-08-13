@@ -22,11 +22,11 @@
 class Solution {
 public:
     bool DFS (TreeNode* node, int remain) {
+        if (!node) return false;
         remain -= node->val;
-        if (!node->left && !node->right)    // when it's the leaf node
-            return !remain;                 // if remain = 0, sum equals to target sum
-        return (node->left ? DFS(node->left, remain) : false)       // check left node
-            || (node->right ? DFS(node->right, remain) : false);    // check right node
+        if (!node->left && !node->right)    // when reaches a leaf node
+            return !remain;
+        return DFS(node->left, remain) || DFS(node->right, remain);    // check child nodes
     }
     
     bool hasPathSum(TreeNode* root, int sum) {
