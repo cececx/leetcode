@@ -21,15 +21,10 @@
  
 class Solution {
 public:
-    bool DFS (TreeNode* node, int remain) {
-        if (!node) return false;
-        remain -= node->val;
-        if (!node->left && !node->right)    // when reaches a leaf node
-            return !remain;
-        return DFS(node->left, remain) || DFS(node->right, remain);    // check child nodes
-    }
-    
     bool hasPathSum(TreeNode* root, int sum) {
-        return root && DFS(root, sum);
+        if (!root) return false;
+        sum -= root->val;
+        if (!root->left && !root->right) return !sum;
+        return hasPathSum(root->left, sum) || hasPathSum(root->right, sum); // check child nodes
     }
 };
