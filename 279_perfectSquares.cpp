@@ -22,12 +22,32 @@ public:
 };
 
 
-
-// ---------------------------------------------------------------
-
+// 144ms. BFS. Time O(n * sqrt(n)), Space O(sqrt(n))
+// 建树，子节点是父节点减去一个square数
+class Solution {
+public:
+    int numSquares(int n) {
+        if (!n) return 0;
+        queue<int> q({n});
+        int d = 1;
+        while(!q.empty()) {
+            int k = q.size();
+            while(k--) {
+                int cur = q.front(); q.pop();
+                for (int m = sqrt(cur); m >= 1; m--) {
+                    if (cur == m * m) return d;
+                    q.push(cur - m * m);
+                }
+            }
+            d++;
+        }
+        return d;
+    }
+};
 
 
 // 64ms. BFS. Time O(sqr(n)), Space O(n)
+// 建图。初始化所有square numbers入队列，开始BFS，直到找到n
 class Solution {
 public:
     int numSquares(int n) {
